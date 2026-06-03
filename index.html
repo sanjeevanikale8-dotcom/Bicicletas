@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bicicletas — Rent E-Bicycles Worldwide</title>
+  <meta name="description" content="Rent premium electric bicycles online. Pick up in 10+ cities worldwide. Instant booking, transparent pricing, and seamless refunds.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2322c55e'/><text y='24' x='5' font-size='22'>🚲</text></svg>">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ── Navbar ──────────────────────────────────────────────────────────────── -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="navigate('home')" style="cursor:pointer">
+      <div class="nav-logo-icon">🚲</div>
+      Bici<span>cletas</span>
+    </div>
+
+    <div class="nav-links" id="nav-links">
+      <button class="nav-link active" data-page="home"      onclick="navigate('home')">Home</button>
+      <button class="nav-link"        data-page="bikes"     onclick="navigate('bikes')">Bikes</button>
+      <button class="nav-link"        data-page="locations" onclick="navigate('locations')">Locations</button>
+      <button class="nav-link"        data-page="offers"    onclick="navigate('offers')">Offers 🔥</button>
+      <button class="nav-link"        data-page="dashboard" onclick="navigate('dashboard')">My Rentals</button>
+    </div>
+
+    <div class="nav-actions">
+      <button class="nav-cart-btn" onclick="navigate('dashboard')" title="Active rentals">
+        🚲
+        <span class="cart-count" id="cart-count" style="display:none">0</span>
+      </button>
+      <button class="btn btn-ghost btn-sm" onclick="navigate('dashboard')">Sign In</button>
+      <button class="btn btn-primary btn-sm" onclick="openBooking(null)">Book Now</button>
+      <button class="nav-hamburger" id="hamburger" onclick="toggleMobileMenu()">☰</button>
+    </div>
+  </div>
+
+  <!-- Mobile menu (hidden by default) -->
+  <div id="mobile-menu" style="display:none;padding:10px 20px 16px;border-top:1px solid var(--gray-200);background:#fff">
+    <button class="nav-link" style="display:block;width:100%;text-align:left;padding:10px 8px" onclick="navigate('home');closeMobileMenu()">🏠 Home</button>
+    <button class="nav-link" style="display:block;width:100%;text-align:left;padding:10px 8px" onclick="navigate('bikes');closeMobileMenu()">🚲 Bikes</button>
+    <button class="nav-link" style="display:block;width:100%;text-align:left;padding:10px 8px" onclick="navigate('locations');closeMobileMenu()">📍 Locations</button>
+    <button class="nav-link" style="display:block;width:100%;text-align:left;padding:10px 8px" onclick="navigate('offers');closeMobileMenu()">🔥 Offers</button>
+    <button class="nav-link" style="display:block;width:100%;text-align:left;padding:10px 8px" onclick="navigate('dashboard');closeMobileMenu()">👤 My Rentals</button>
+    <button class="btn btn-primary btn-full" style="margin-top:8px" onclick="openBooking(null);closeMobileMenu()">Book Now</button>
+  </div>
+</nav>
+
+<!-- ── Main content ─────────────────────────────────────────────────────────── -->
+<main>
+  <div id="main-content">
+    <!-- Rendered by JavaScript -->
+    <div style="display:flex;align-items:center;justify-content:center;min-height:60vh;flex-direction:column;gap:16px;color:var(--gray-400)">
+      <div style="font-size:3rem">🚲</div>
+      <p>Loading Bicicletas…</p>
+    </div>
+  </div>
+</main>
+
+<!-- ── Footer ──────────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <div style="width:30px;height:30px;background:var(--green);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1rem">🚲</div>
+        <span style="color:#fff;font-size:1.2rem;font-weight:800">Bicicletas</span>
+      </div>
+      <p>The world's greenest way to explore cities. Premium e-bikes, instant booking, and a global network of hubs — from New York to Tokyo.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">📷</a>
+        <a href="#" class="social-btn">▶</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Our Bikes</h4>
+      <ul>
+        <li><a href="#" onclick="navigate('bikes');return false">All Models</a></li>
+        <li><a href="#" onclick="setFilter('leisure');navigate('bikes');return false">Leisure</a></li>
+        <li><a href="#" onclick="setFilter('city');navigate('bikes');return false">City Urban</a></li>
+        <li><a href="#" onclick="setFilter('sport');navigate('bikes');return false">Sport</a></li>
+        <li><a href="#" onclick="setFilter('offroad');navigate('bikes');return false">Trail</a></li>
+        <li><a href="#" onclick="setFilter('cargo');navigate('bikes');return false">Cargo</a></li>
+        <li><a href="#" onclick="setFilter('premium');navigate('bikes');return false">Luxe</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#" onclick="navigate('locations');return false">Our Locations</a></li>
+        <li><a href="#" onclick="navigate('offers');return false">Current Offers</a></li>
+        <li><a href="#" onclick="toast('Coming soon!','info');return false">About Us</a></li>
+        <li><a href="#" onclick="toast('Coming soon!','info');return false">Sustainability</a></li>
+        <li><a href="#" onclick="toast('Coming soon!','info');return false">Press</a></li>
+        <li><a href="#" onclick="toast('Coming soon!','info');return false">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#" onclick="toast('Help centre coming soon','info');return false">Help Centre</a></li>
+        <li><a href="#" onclick="navigate('dashboard');return false">My Bookings</a></li>
+        <li><a href="#" onclick="toast('Refund portal coming soon','info');return false">Refunds</a></li>
+        <li><a href="#" onclick="toast('Coming soon!','info');return false">Safety Guide</a></li>
+        <li><a href="#" onclick="toast('Coming soon!','info');return false">Privacy Policy</a></li>
+        <li><a href="#" onclick="toast('Coming soon!','info');return false">Terms of Use</a></li>
+      </ul>
+      <div style="margin-top:18px">
+        <h4 style="margin-bottom:8px">Newsletter</h4>
+        <div style="display:flex;gap:6px">
+          <input type="email" placeholder="your@email.com" style="flex:1;padding:8px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:#fff;font-size:.82rem;outline:none">
+          <button class="btn btn-primary btn-sm" onclick="subscribeNewsletter()">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Bicicletas Global Ltd. All rights reserved.</p>
+    <p style="display:flex;gap:16px">
+      <a href="#" style="transition:color .2s" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color=''">Privacy</a>
+      <a href="#" style="transition:color .2s" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color=''">Terms</a>
+      <a href="#" style="transition:color .2s" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color=''">Cookies</a>
+    </p>
+  </div>
+</footer>
+
+<!-- ── Booking modal overlay ────────────────────────────────────────────────── -->
+<div class="modal-overlay" id="booking-overlay">
+  <!-- Populated by JS -->
+</div>
+
+<!-- ── Toast container ─────────────────────────────────────────────────────── -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- ── Scripts ─────────────────────────────────────────────────────────────── -->
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+  function toggleMobileMenu() {
+    const m = document.getElementById('mobile-menu');
+    m.style.display = m.style.display === 'none' ? 'block' : 'none';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').style.display = 'none';
+  }
+  function subscribeNewsletter() {
+    toast('You\'re subscribed! Welcome to Bicicletas 🚲', 'success');
+  }
+</script>
+
+</body>
+</html>
